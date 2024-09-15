@@ -1,0 +1,10 @@
+.note_count_container {
+  display: flex;
+  min-width: 100px;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  background-color: aqua;
+  position: absolute;
+  right: 0;
+}
