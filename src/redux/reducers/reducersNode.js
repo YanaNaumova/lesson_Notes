@@ -11,46 +11,42 @@ const initialState = {
   currentNode: null,
 };
 
-const noteReducer = (state = initialState, { type, payload }) => {
-  if (type === ADD_NOTE) {
-    return {
-      ...state,
-      noteCount: state.noteCount + 1,
-      notesList: [...state.notesList, payload],
-    };
+const noteReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case ADD_NOTE:
+      return {
+        ...state,
+        noteCount: state.noteCount + 1,
+        notesList: [...state.notesList, action.payload],
+      };
+    case DELETE_NOTE:
+      return {
+        ...state,
+        noteCount: state.noteCount - 1,
+        notesList: state.notesList.filter((note) => note.id !== action.payload),
+      };
+    case SET_CURRENT_NOTE:
+      return {
+        ...state,
+        currentNode: state.notesList.find((note) => note.id === action.payload),
+      };
+    case EDIT_NOTE:
+      return {
+        ...state,
+        notesList: state.notesList.map((note) => {
+          if (note.id === action.payload.id) {
+            return {
+              ...note,
+              title: action.payload.editNoteData.title,
+              content: action.payload.editNoteData.content,
+            };
+          }
+          return note;
+        }),
+      };
+    default:
+      return state;
   }
-
-  if (type === DELETE_NOTE) {
-    return {
-      ...state,
-      noteCount: state.noteCount - 1,
-      notesList: state.notesList.filter((note) => note.id !== payload),
-    };
-  }
-
-  if (type === SET_CURRENT_NOTE) {
-    return {
-      ...state,
-      currentNode: state.notesList.find((note) => note.id === payload),
-    };
-  }
-
-  if (type === EDIT_NOTE) {
-    return {
-      ...state,
-      notesList: state.notesList.map((note) => {
-        if (note.id === payload.id) {
-          return {
-            ...note,
-            title: payload.editNoteData.title,
-            content: payload.editNoteData.content,
-          };
-        }
-        return note;
-      }),
-    };
-  }
-  return state;
 }; // создаем reducer и знакомим его со store
 // передаем в него state и action
 //возвращаем state
