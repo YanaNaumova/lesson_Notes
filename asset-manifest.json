@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/lesson_Notes/static/css/main.6d3cc8b2.css",
+    "main.js": "/lesson_Notes/static/js/main.c85f1660.js",
+    "index.html": "/lesson_Notes/index.html",
+    "main.6d3cc8b2.css.map": "/lesson_Notes/static/css/main.6d3cc8b2.css.map",
+    "main.c85f1660.js.map": "/lesson_Notes/static/js/main.c85f1660.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6d3cc8b2.css",
+    "static/js/main.c85f1660.js"
+  ]
+}
